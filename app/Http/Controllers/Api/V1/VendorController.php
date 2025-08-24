@@ -2,58 +2,55 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Customer;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CustomerController extends Controller
+class VendorController extends Controller
 {
-
-    public function index()
+     public function index()
     {
-        $data = Customer::all();
-
+        $data = Vendor::all();
         return response()->json([
             'status' => 'Success',
             'data' => $data
-        ], 200);
+        ]);
     }
 
     public function store(Request $request)
     {
-        $data = Customer::create($request->all());
-
+        $data = Vendor::create($request->all());
         return response()->json([
             'status' => 'Success',
             'data' => $data
-        ], 200);
+        ]);
     }
+
     public function show($id)
     {
-        $data = Customer::findOrFail($id);
-
+        $data = Vendor::findOrFail($id);
         return response()->json([
             'status' => 'Success',
             'data' => $data
-        ], 200);
+        ]);
     }
+
     public function update(Request $request, $id)
     {
-        $data = Customer::findOrFail($id);
+        $data = Vendor::findOrFail($id);
         $data->update($request->all());
-
         return response()->json([
             'status' => 'Success',
             'data' => $data
-        ], 200);
+        ]);
     }
+
     public function destroy($id)
     {
-        $data = Customer::findOrFail($id);
-        $data->delete();
+        $data = Vendor::findOrFail($id)->delete();
         return response()->json([
             'status' => 'Success',
             'data' => $data
-        ], 200);
+        ]);
     }
 }

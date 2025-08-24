@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('branch_ledgers', function (Blueprint $table) {
+            $table->id();
+            $table->string('date')->nullable();
+            $table->string('trip_id')->nullable();
+            $table->string('purchase_id')->nullable();
+            $table->string('payment_rec_id')->nullable();
+            $table->string('accounts_id')->nullable();
+            $table->string('remarks')->nullable();
+            $table->string('mode')->nullable();
+            $table->string('unload_point')->nullable();
+            $table->string('trip_expense')->nullable();
+            $table->string('due_amount')->nullable();
+            $table->string('cash_in')->nullable();
+            $table->string('cash_out')->nullable();
+            $table->string('user_name')->nullable();
+            $table->string('status')->nullable();
+            $table->string('branch_name')->nullable();
+            $table->string('created_by')->nullable();
+            $table->string('customer_name')->nullable();
+            $table->string('balance')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('branch_ledgers');
+    }
+};

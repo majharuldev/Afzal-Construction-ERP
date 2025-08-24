@@ -1,10 +1,16 @@
 <?php
 
+use App\Models\VendorLedger;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\Api\V1\AuthController;
-
+use App\Http\Controllers\Api\V1\VendorController;
+use App\Http\Controllers\Api\V1\CustomerController;
+use App\Http\Controllers\Api\V1\SupplierController;
+use App\Http\Controllers\Api\V1\VendorBillController;
+use App\Http\Controllers\Api\V1\DailyExpenseController;
+use App\Http\Controllers\Api\V1\PaymentRecievedController;
 
 Route::prefix('v1')->group(function () {
 
@@ -22,6 +28,27 @@ Route::prefix('v1')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
 
 
+        // daily Expense Route
         Route::apiResource('payments', DailyExpenseController::class);
+
+        // supplier 
+        Route::apiResource('supplier', SupplierController::class);
+
+        // customer
+        Route::apiResource('customer', CustomerController::class);
+
+        // vendor list
+        Route::apiResource('vendor', VendorController::class);
+
+        // vendor Bill 
+        Route::apiResource('vendor/Bill', VendorBillController::class);
+
+
+        // payment  Recieve
+        Route::apiResource('payment/Recieve', PaymentRecievedController::class);
+
+
+
+
     });
 });
