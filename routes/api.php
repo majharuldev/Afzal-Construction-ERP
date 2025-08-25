@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\V1\CustomerController;
 use App\Http\Controllers\Api\V1\SupplierController;
 use App\Http\Controllers\Api\V1\VendorBillController;
 use App\Http\Controllers\Api\V1\DailyExpenseController;
+use App\Http\Controllers\Api\V1\HelperController;
+use App\Http\Controllers\Api\V1\OfficeController;
 use App\Http\Controllers\Api\V1\PaymentRecievedController;
 
 Route::prefix('v1')->group(function () {
@@ -46,6 +48,12 @@ Route::prefix('v1')->group(function () {
 
         // payment  Recieve
         Route::apiResource('payment/Recieve', PaymentRecievedController::class);
+
+        // helper
+        Route::apiResource('helper', HelperController::class);
+
+        // office
+        Route::apiResource('office', OfficeController::class);
 
 
 
