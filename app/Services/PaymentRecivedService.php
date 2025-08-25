@@ -75,6 +75,10 @@ class PaymentRecivedService
             throw $e;
         }
     }
+    public function getById($id)
+    {
+        return PaymentRecieve::findOrFail($id);
+    }
 
     // Delete method
     public function delete($id)
