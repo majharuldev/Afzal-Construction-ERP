@@ -10,12 +10,14 @@ use App\Http\Controllers\Api\V1\CustomerController;
 use App\Http\Controllers\Api\V1\SupplierController;
 use App\Http\Controllers\Api\V1\VendorBillController;
 use App\Http\Controllers\Api\V1\DailyExpenseController;
+use App\Http\Controllers\Api\V1\EmployeeController;
+use App\Http\Controllers\Api\V1\FundsTransferController;
 use App\Http\Controllers\Api\V1\HelperController;
 use App\Http\Controllers\Api\V1\OfficeController;
 use App\Http\Controllers\Api\V1\PaymentRecievedController;
 
 Route::prefix('v1')->group(function () {
-
+ 
     // Public Routes (No auth needed)
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);
@@ -43,11 +45,11 @@ Route::prefix('v1')->group(function () {
         Route::apiResource('vendor', VendorController::class);
 
         // vendor Bill 
-        Route::apiResource('vendor/Bill', VendorBillController::class);
+        Route::apiResource('vendorbill', VendorBillController::class);
 
 
-        // payment  Recieve
-        Route::apiResource('payment/Recieve', PaymentRecievedController::class);
+        // paymentRecieve
+        Route::apiResource('payment/recieve', PaymentRecievedController::class);
 
         // helper
         Route::apiResource('helper', HelperController::class);
@@ -55,7 +57,11 @@ Route::prefix('v1')->group(function () {
         // office
         Route::apiResource('office', OfficeController::class);
 
+        // fundTransfer
+        Route::apiResource('fund/transfer', FundsTransferController::class);
 
+        // employee
+        Route::apiResource('employee', EmployeeController::class);
 
 
     });

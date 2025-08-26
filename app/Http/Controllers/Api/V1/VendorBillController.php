@@ -11,16 +11,27 @@ use App\Http\Controllers\Controller;
 
 class VendorBillController extends Controller
 {
-    public function index()
-    {
-        $data = VendorBill::latest()->get();
+   
+
+  public function index(){
+
+    $bill= VendorBill::all();
+
+     
+return response()->json([
+        'status' => 'Success',
+        'data' => $bill
+    ], 200);
 
 
-        return response()->json([
-            'status' => 'Success',
-            'data' => $data
-        ], 200);
-    }
+  }
+
+
+
+
+
+
+
 
     public function store(Request $request)
     {
@@ -61,8 +72,6 @@ class VendorBillController extends Controller
 
 
             ]);
-
-
 
             DB::commit();
 
