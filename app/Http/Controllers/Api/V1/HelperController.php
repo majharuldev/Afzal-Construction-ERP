@@ -10,7 +10,7 @@ class HelperController extends Controller
 {
       public function index()
     {
-        $data = Helper::all();
+        $data = Helper::latest()->get();
         return response()->json([
             'status' => 'Success',
             'data' => $data

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('paid_to')->nullable();
             $table->string('pay_amount')->nullable();
             $table->string('payment_category')->nullable();
+            $table->string('branch_name')->nullable();
             $table->string('remarks')->nullable();
             $table->timestamps();
         });

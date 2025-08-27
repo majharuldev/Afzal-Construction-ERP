@@ -10,7 +10,7 @@ class OfficeController extends Controller
 {
      public function index()
     {
-        $data = Office::all();
+        $data = Office::latest()->get();
         return response()->json([
             'status' => 'Success',
             'data' => $data

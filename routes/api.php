@@ -15,6 +15,7 @@ use App\Http\Controllers\Api\V1\FundsTransferController;
 use App\Http\Controllers\Api\V1\HelperController;
 use App\Http\Controllers\Api\V1\OfficeController;
 use App\Http\Controllers\Api\V1\PaymentRecievedController;
+use App\Http\Controllers\Api\V1\SalaryExpensController;
 
 Route::prefix('v1')->group(function () {
  
@@ -62,6 +63,9 @@ Route::prefix('v1')->group(function () {
 
         // employee
         Route::apiResource('employee', EmployeeController::class);
+
+        // salary
+        Route::apiResource('salary', SalaryExpensController::class);
 
 
     });

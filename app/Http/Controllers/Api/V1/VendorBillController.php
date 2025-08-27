@@ -15,7 +15,7 @@ class VendorBillController extends Controller
 
   public function index(){
 
-    $bill= VendorBill::all();
+    $bill= VendorBill::latest()->get();
 
      
 return response()->json([

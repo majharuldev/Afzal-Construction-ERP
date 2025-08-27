@@ -10,7 +10,7 @@ class VendorController extends Controller
 {
      public function index()
     {
-        $data = Vendor::all();
+        $data = Vendor::latest()->get();
         return response()->json([
             'status' => 'Success',
             'data' => $data

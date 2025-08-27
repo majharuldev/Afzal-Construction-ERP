@@ -11,7 +11,7 @@ class VendorLedgerController extends Controller
      public function index()
     {
 
-        $data = VendorLedger::all();
+        $data = VendorLedger::latest()->get();
         return response()->json([
             'status' => 'Success',
             'data' => $data

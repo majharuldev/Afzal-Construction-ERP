@@ -10,7 +10,7 @@ class SupplierController extends Controller
 {
     public function index()
     {
-        $data = Supplier::all();
+        $data = Supplier::latest()->get();
         return response()->json([
             'status' => 'Success',
             'data' => $data

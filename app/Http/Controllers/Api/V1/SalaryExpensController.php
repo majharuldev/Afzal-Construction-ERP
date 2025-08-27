@@ -3,16 +3,18 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\BranchLedger;
-use App\Models\DailyExpense;
 use Illuminate\Http\Request;
+use App\Models\SalaryExpense;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
-class DailyExpenseController extends Controller
+class SalaryExpensController extends Controller
 {
+
+
     public function index()
     {
-        $model = DailyExpense::latest()->get();
+        $model = SalaryExpense::latest()->get();
 
         return response()->json([
             'status' => 'success',
@@ -21,7 +23,7 @@ class DailyExpenseController extends Controller
     }
     public function show($id)
     {
-        $expense = DailyExpense::find($id);
+        $expense = SalaryExpense::find($id);
 
         if (!$expense) {
             return response()->json([
@@ -41,9 +43,9 @@ class DailyExpenseController extends Controller
 
         try {
             // Insert into trips table
-            $dailyExp = DailyExpense::create([
+            $dailyExp = SalaryExpense::create([
                 'date' => $request->date,
-                'paid_to'  => $request->paid_to,
+                'employee_name'  => $request->employee_name,
                 'pay_amount'  => $request->pay_amount,
                 'payment_category' => $request->payment_category,
                 'branch_name' => $request->branch_name,
@@ -88,11 +90,11 @@ class DailyExpenseController extends Controller
         DB::beginTransaction();
 
         try {
-            // Update DailyExpense
-            $dailyExp = DailyExpense::findOrFail($id);
+            // Update SalaryExpense
+            $dailyExp = SalaryExpense::findOrFail($id);
             $dailyExp->update([
                 'date'              => $request->date,
-                'paid_to'           => $request->paid_to,
+                'employee_name'           => $request->employee_name,
                 'pay_amount'        => $request->pay_amount,
                 'payment_category'  => $request->payment_category,
                 'branch_name'       => $request->branch_name,
@@ -123,18 +125,5 @@ class DailyExpenseController extends Controller
                 'error'   => $e->getMessage()
             ], 500);
         }
-    }
-
-
-    public function destroy($id)
-    {
-        $model = DailyExpense::find($id);
-        $model->delete();
-
-        return response()->json([
-            'status' => 'Success',
-            'message' => ' Deleted Successfully',
-            'data' => $model
-        ], 201);
     }
 }

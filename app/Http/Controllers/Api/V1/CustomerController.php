@@ -11,7 +11,7 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $data = Customer::all();
+        $data = Customer::latest()->get();
 
         return response()->json([
             'status' => 'Success',

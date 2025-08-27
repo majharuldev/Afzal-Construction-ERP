@@ -13,7 +13,7 @@ class FundsTransferController extends Controller
 
     public function index()
     {
-        $data = FundTransfer::all();
+        $data = FundTransfer::latest()->get();
 
         return response()->json([
             'status' => 'Success',
